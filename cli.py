@@ -1,6 +1,5 @@
 import argparse
 from student_manager.manager import StudentManager
-from student_manager.persistence import JSONPersistence
 
 
 def main():
@@ -13,9 +12,8 @@ def main():
 
     args = parser.parse_args()
 
+    # O manager agora controla a persistência
     manager = StudentManager()
-    persistence = JSONPersistence(manager)
-    persistence.load()
 
     if args.add_student:
         name, age, courses = args.add_student
@@ -31,7 +29,8 @@ def main():
     if args.list_course:
         print(manager.list_students_by_course(args.list_course))
 
-    persistence.save()
+    # Salva automaticamente ao final
+    manager.save()
 
 
 if __name__ == "__main__":

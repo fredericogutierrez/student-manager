@@ -1,0 +1,10 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# JSON data file
+students.json
+
+# Virtual environment (if used)
+venv/
+.env/

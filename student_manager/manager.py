@@ -1,6 +1,15 @@
+from .persistence import JSONPersistence
+
+
+
 class StudentManager:
     def __init__(self):
         self.records = {}
+        self.persistence = JSONPersistence()
+        self.records = self.persistence.load()
+
+    def save(self):
+        self.persistence.save(self.records)
 
     def add_student(self, name, age, courses):
         if name in self.records:
